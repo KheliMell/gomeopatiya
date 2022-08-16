@@ -30,7 +30,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         return new String[]{"/"};
     }
 
-    //Adding filter (for _method in POST request ->{PATCH})
+    /*Добавление фильтра (для _method в POST запросе для конвертации в PATCH)*/
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
@@ -39,6 +39,6 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     private void registerHiddenFieldFilter(ServletContext context) {
         context.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter())
-                .addMappingForUrlPatterns(null, true,  "/*");
+                .addMappingForUrlPatterns(null, true, "/*");
     }
 }

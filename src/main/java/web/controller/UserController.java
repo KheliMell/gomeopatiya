@@ -1,6 +1,5 @@
 package web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import web.model.User;
 public class UserController {
     private final UserDao userDao;
 
-    public UserController(@Autowired UserDao userDao) {
+    public UserController(UserDao userDao) {
         this.userDao = userDao;
     }
 
