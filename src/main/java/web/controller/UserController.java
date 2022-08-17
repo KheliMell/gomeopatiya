@@ -3,27 +3,27 @@ package web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import web.dao.UserDao;
 import web.model.User;
+import web.service.UserService;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private final UserDao userDao;
+    private final UserService userService;
 
-    public UserController(UserDao userDao) {
-        this.userDao = userDao;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping()
     public String showAllUsers(Model model) {
-        model.addAttribute("users", userDao.getAllUsers());
+        model.addAttribute("users", userService.getAllUsers());
         return "users/allUsers";
     }
 
     @GetMapping("/{id}")
     public String showUserById(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userDao.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "users/userById";
     }
 
@@ -36,26 +36,26 @@ public class UserController {
 
     @PostMapping()
     public String createNewUser(@ModelAttribute("user") User user) {
-        userDao.addUser(user);
+        userService.addUser(user);
         return "redirect:/users";
     }
 
     //Update User
     @GetMapping("/{id}/edit")
     public String editUser(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userDao.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "users/editUser";
     }
 
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-        userDao.updateUser(id, user);
+        userService.updateUser(id, user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") int id) {
-        userDao.removeUser(id);
+        userService.removeUser(id);
         return "redirect:/users";
     }
 }
