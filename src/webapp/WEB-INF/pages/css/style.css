@@ -103,7 +103,7 @@ body {
 }
 
 .search {
-  width: 20%;
+  width: 15%;
   position: relative;
 }
 
@@ -134,7 +134,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 37px;
+  width: 27px;
   height: 100%;
   cursor: pointer;
   background: url(https://lh4.googleusercontent.com/-b-5aBxcxarY/UAfFW9lVyjI/AAAAAAAABUg/gQtEXuPuIds/s13/go.png) 50% no-repeat;
@@ -147,4 +147,15 @@ body {
 
 input[type="search"] {
   -webkit-appearance: none;
+}
+
+.basket img {
+  margin-right: 10px;
+  margin-left: 10px;
+  max-height: 25px;
+}
+
+.header_right {
+  display: flex;
+  justify-items: baseline;
 }
